@@ -1,3 +1,7 @@
+
+clear /all
+clc
+%%
 %---------------------------------------------------
 %Archivo  G2 - EderGomezdeSegura-XabiGandiaga . pdf
 %
@@ -28,8 +32,31 @@ Matriz = [exp(-0.02*10) exp(-0.07*10) 21.34; exp(-0.02*11) exp(-0.07*11) 20.68; 
 
 rref(Matriz)
 
-x = [exp(-0.02*10) exp(-0.07*10); exp(-0.02*11) exp(-0.07*11); exp(-0.02*12) exp(-0.07*12); exp(-0.02*14) exp(-0.07*14); exp(-0.02*15) exp(-0.07*15)]
-y=  [21.34;20.68;20.05;18.87;18.30]
+% como es 0=1 es un sistema incompatible por lo tanto tenemos que resolver
+% con el metodo de minimos cuadrados
 
-plot(x,y,'*b');
+%%Metodo de minimos cuadrados
+%Vectores x e y
+X = [exp(-0.02*10) exp(-0.07*10); exp(-0.02*11) exp(-0.07*11); exp(-0.02*12) exp(-0.07*12); exp(-0.02*14) exp(-0.07*14); exp(-0.02*15) exp(-0.07*15)]
+Y=  [21.34;20.68;20.05;18.87;18.30]
 
+%para realizar temos que utilizar la formaula Beta=(((x^t)*x)^-1)*(x^t)*y
+Beta=(((X')*X)^-1)*X'*Y
+
+% Por lo tanto la curva de minimos cuadrados deseado es, y = 19,94*(e^-0,02*tiempo)+10,10*(e^-0,07*tiempo)
+
+Tiempo = [10 11 12 14 15]
+
+i= 1;
+%y = zeros(5);
+while i < 6
+    [y(i)] = 19.94*(exp(-0.02*Tiempo(i))) + 10.10*(exp(-0.07*Tiempo(i)))
+    i = i+1;
+end
+
+% Grafico de los puntos Tiempo e y con la linea aprosimada en Rojo
+plot(Tiempo,y,'*b')
+
+h = lsline;
+
+set(h, 'color', 'r')
