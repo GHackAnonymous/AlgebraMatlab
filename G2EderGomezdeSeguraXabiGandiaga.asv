@@ -92,15 +92,17 @@ while i < 14
     i = i+1;
 end
 syms x
+A
 % Grafico de los puntos Tiempo e y con la linea aprosimada en Rojo
 
 figure (1)
-ezplot('-0.85 + 4.70*x + 5.55*x^2 + -0.02*x^3', [0,12])
+ezplot('Beta(1) + Beta(2)*x + Beta(3)*x^2 + Beta(4)*x^3', [0,12])
 hold on
+plot()
 
-plot(Tiempo,y,'*b')
+h = lsline;
 
-hold off
+set(h, 'color', 'r')
 
 syms t
 syms b1
