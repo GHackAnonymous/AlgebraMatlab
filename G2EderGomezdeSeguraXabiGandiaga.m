@@ -54,13 +54,18 @@ while i < 6
 end
 
 % Grafico de los puntos Tiempo e y con la linea aprosimada en Rojo
+
+% puntos = cordenadas; Curva = aprosimacion
+
+syms x
+
+figure (1)
+ezplot('19.94*(exp(-0.02*x)) + 10.10*(exp(-0.07*x))', Tiempo)
+hold on
+
 plot(Tiempo,y,'*b')
 
-h = lsline;
-
-set(h, 'color', 'r')
-
- 
+hold off
 
 %% ------------
 
@@ -116,5 +121,3 @@ b3 = Beta(3)
 b4 = Beta(4)
 
 Estimacion = 3*b4*t^2 + 2*b3*t + b2
-
-
