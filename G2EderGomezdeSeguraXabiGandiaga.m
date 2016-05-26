@@ -60,12 +60,16 @@ end
 syms x
 
 figure (1)
-ezplot('19.94*(exp(-0.02*x)) + 10.10*(exp(-0.07*x))', Tiempo)
+ h = ezplot('19.94*(exp(-0.02*x)) + 10.10*(exp(-0.07*x))', Tiempo)
+
+set(h, 'color', 'r')
+
 hold on
 
 plot(Tiempo,y,'*b')
 
 hold off
+
 
 %% ------------
 
@@ -100,7 +104,10 @@ syms x
 % Grafico de los puntos Tiempo e y con la linea aprosimada en Rojo
 
 figure (1)
-ezplot('-0.85 + 4.70*x + 5.55*x^2 + -0.02*x^3', [0,12])
+h = ezplot('-0.85 + 4.70*x + 5.55*x^2 + -0.02*x^3', [0,12])
+
+set(h, 'color', 'r')
+
 hold on
 
 plot(Tiempo,y,'*b')
